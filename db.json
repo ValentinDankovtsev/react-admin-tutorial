@@ -1,0 +1,31 @@
+{
+  "finance": [
+    {
+      "id": "1",
+      "name": "Alexey",
+      "date": "2021-01-01",
+      "income": "1000",
+      "expenses": "100",
+      "description": "Доплата",
+      "cash": "Наличный"
+    },
+    {
+      "description": "На то да се",
+      "date": "2021-11-19",
+      "income": "500",
+      "expenses": "300",
+      "cash": "Безналичный",
+      "id": "1y_mvVS",
+      "name": "Vasylii"
+    },
+    {
+      "description": "рыбов",
+      "income": "6",
+      "expenses": "30",
+      "cash": "Безналичный",
+      "date": "2021-11-20",
+      "id": "jGj6V4H",
+      "name": "Alexey"
+    }
+  ]
+}
