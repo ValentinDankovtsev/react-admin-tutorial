@@ -3,6 +3,12 @@ import { List, Datagrid, TextField, DateField, EditButton, DeleteButton, TextInp
 import { TotalofOperation, Total, ResourceName } from './Total';
 import { Aside } from './Total';
 import { useMediaQuery } from '@material-ui/core';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 
 const financeFilters = [
@@ -27,8 +33,49 @@ const financeFilters = [
 ];
 
 
-const FinanceList = (props) => {
+const CommentEditButton = (record) => {
+    console.log(record, 'record')
+    // const { record } = data
+    // console.log(Object.keys(record), 'record')
 
+    return (
+        <EditButton basePath={`/finance/${record.id}`}  record={record}/>
+
+    );
+}
+
+const MobileFinanceList = (props) => {
+    console.log(props)
+    const { data } = props
+    console.log(data)
+    const dataArray = Object.values(data)
+    return (
+        dataArray.map(operation => <Accordion key={operation.id}>
+            <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+            >
+                <Typography>{operation.id}   {operation.date} from {operation.name}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <Typography>
+                    Description: {operation.description}
+                </Typography>
+                <hr></hr>
+                <Typography>
+                    INC: {operation.income}
+                </Typography>
+                <Typography>
+                    EXP: {operation.expenses}
+                </Typography>
+                <CommentEditButton record={data} />
+            </AccordionDetails>
+        </Accordion>)
+    )
+}
+
+const FinanceList = (props) => {
 
     const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
 
@@ -39,13 +86,14 @@ const FinanceList = (props) => {
             // aside={<Aside />} 
             {...props} filters={financeFilters}>
             {isSmall ? (
-                <SimpleList
-                    primaryText={record => record.name}
-                    secondaryText={record => `Операция: ${record.id} 
-                    Income: ${record.income}`}
-                    tertiaryText={record => new Date(record.date).toLocaleDateString()}
+                // <SimpleList
+                //     primaryText={record => record.name}
+                //     secondaryText={record => `Операция: ${record.id} 
+                //     Income: ${record.income}`}
+                //     tertiaryText={record => new Date(record.date).toLocaleDateString()}
 
-                />
+                // />
+                <MobileFinanceList />
             ) : (
                 <Datagrid>
                     <TextField source='name' />
