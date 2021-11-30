@@ -11,9 +11,13 @@ import simpleRestProvider from 'ra-data-simple-rest';
 import FinanceList from './components/FinanceList';
 import FinanceCreate from './components/FinanceCreate';
 import FinanceEdit from './components/FinanceEdit';
+import axios from "axios";
 
-// const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
-// console.log(dataProvider )
+const dataProvider = jsonServerProvider('194.177.21.214:7005/api/v1/cashbox?CurrentPage=1&PerPage=500');
+console.log(dataProvider.getList(),'dataProvider' )
+
+
+
 const App = () => (
   <Admin dashboard={Dashboard} dataProvider={jsonServerProvider('http://localhost:3000')} authProvider={authProvider}>
     <Resource name="finance" list={FinanceList} create={FinanceCreate} edit={FinanceEdit} />
@@ -21,3 +25,5 @@ const App = () => (
 );
 
 export default App;
+
+// 194.177.21.214:7005/api/v1/cashbox?CurrentPage=1&PerPage=500

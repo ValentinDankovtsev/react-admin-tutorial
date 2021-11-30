@@ -3,6 +3,7 @@ import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
 import Typography from '@mui/material/Typography'
+import { Box } from "@material-ui/core";
 
 export const TotalofOperation = ({ record }) => {
 
@@ -22,9 +23,9 @@ export const Aside = () => {
     }, 0)
 
     return (
-        <div class="RaList-main-54">
+        <Box sx={{ color: "red", display: "flex", mr: 2, pt: 1 , alignItems: "right", justifyContent: "right"}}>
             Итого: {sumOfTotals}
-        </div>
+        </Box>
         // <TableBody>
         //     <TableRow>
         //         <TableCell colSpan={2}>Total</TableCell>
