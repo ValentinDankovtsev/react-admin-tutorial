@@ -1,6 +1,3 @@
-
-
-
 {
   "finance": [
     {
@@ -11,15 +8,6 @@
       "expenses": 0,
       "description": "Проект \"Project1\"",
       "cash": "Наличный"
-    },
-    {
-      "description": "Проект \"Project2\"",
-      "date": "2021-11-23",
-      "id": "cMS1HKB",
-      "name": "Petr",
-      "income": 10000,
-      "expenses": 1000,
-      "cash": "Безналичный"
     },
     {
       "income": 1000,
@@ -45,5 +33,148 @@
       "date": "",
       "id": "Qh4J5NA"
     }
+  ],
+  "users": [
+    {
+      "id": 0,
+      "email": "user1@mail.ru",
+      "firstName": "Alexey",
+      "isActive": false,
+      "mobilePhone": "+73832505",
+      "password": "123456"
+    },
+    {
+      "id": 1,
+      "email": "user2@mail.ru",
+      "firstName": "Vasily",
+      "isActive": false,
+      "mobilePhone": "+73832505",
+      "password": "qwerty"
+    },
+    {
+      "id": 2,
+      "email": "user222@mail.ru",
+      "firstName": "Petr",
+      "isActive": false,
+      "mobilePhone": "+73832510",
+      "password": "qwerty"
+    }
+  ],
+  "userUseType": [
+    {
+      "id": 0,
+      "userId": 0,
+      "useTypeId": 0
+    },
+    {
+      "id": 1,
+      "userId": 1,
+      "useTypeId": 1
+    },
+    {
+      "id": 2,
+      "userId": 0,
+      "useTypeId": 2
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "useTypeId": 1
+    }
+  ],
+  "useType": [
+    {
+      "id": 0,
+      "name": "Директор"
+    },
+    {
+      "id": 1,
+      "name": "Бухгалтер"
+    },
+    {
+      "id": 2,
+      "name": "Менеджер"
+    }
+  ],
+  "userCashBox": [
+    {
+      "id": 0,
+      "cashBoxId": 0,
+      "userId": 0
+    },
+    {
+      "id": 1,
+      "cashBoxId": 1,
+      "userId": 1
+    }
+  ],
+  "cash": [
+    {
+      "id": 0,
+      "name": "Наличный"
+    },
+    {
+      "id": 1,
+      "name": "Безналичный"
+    },
+    {
+      "id": 3,
+      "name": "UnName"
+    }
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "simple1",
+      "userId": 0
+    },
+    {
+      "id": 0,
+      "name": "simple2",
+      "userId": 0
+    }
+  ],
+  "paymentTag": [
+    {
+      "id": 0,
+      "tagId": 0,
+      "paymentId": 0
+    }
+  ],
+  "payments": [
+    {
+      "id": 0,
+      "date": "2021-01-01",
+      "cashBoxId": 0,
+      "useTypeId": 0,
+      "description": "На то да се",
+      "amount": 1000
+    },
+    {
+      "id": 1,
+      "date": "2021-01-02",
+      "cashBoxId": 1,
+      "useTypeId": 1,
+      "description": "Бабосики",
+      "amount": 2000
+    },
+    {
+      "id": 2,
+      "date": "2021-01-04",
+      "cashBoxId": 1,
+      "useTypeId": 1,
+      "description": "!!!!!!!!!!!!!",
+      "amount": 3000
+    },
+    {
+      "id": 3,
+      "date": "2021-01-10",
+      "cashBoxId": 3,
+      "useTypeId": 0,
+      "description": "!!!!!!!!!!!!!",
+      "amount": 4000
+    }
   ]
+
+ 
 }
