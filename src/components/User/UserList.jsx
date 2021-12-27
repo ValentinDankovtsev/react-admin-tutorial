@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { List, Datagrid, TextField, ArrayField } from "react-admin";
+import {
+  List,
+  Datagrid,
+  TextField,
+  ArrayField,
+  ReferenceField,
+  BooleanField
+} from "react-admin";
 import {
   useDataProvider,
   ReferenceManyField,
@@ -28,27 +35,22 @@ const UserList = (props) => {
         <TextField source="id" />
         <TextField source="FirstName" />
         <TextField source="LastName" />
+        <TextField source="Email" />
+        <TextField source="MobilePhone" />
+        <BooleanField source="IsActive" />
         <ReferenceManyField
-          label="Comments by"
+          label="Role"
           reference="userRole"
           target="UserId"
         >
-          {/* <ArrayField source="Id"> */}
+          <ArrayField source="RoleId">
             <SingleFieldList>
-              {/* <ChipField source="id" /> */}
-              <ReferenceManyField
-                label="Comments by"
-                reference="role"
-                target="Id"
-              >
-                <SingleFieldList>
-                  <ChipField source="Description" />
-                </SingleFieldList>
-              </ReferenceManyField>
+              <ReferenceField reference="role" source="RoleId">
+                <ChipField source="Name" />
+              </ReferenceField>
             </SingleFieldList>
-          {/* </ArrayField> */}
+          </ArrayField>
         </ReferenceManyField>
-        {/* <div>{test?.data[0].id}</div> */}
       </Datagrid>
     </List>
   );
