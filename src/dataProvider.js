@@ -35,7 +35,7 @@ const getListData = async (resource) => {
     PerPage: 20,
   };
   const headers = {
-    token: "rYVPYiAjtZYdUNGuxGeNrR6Rb6GkhfXC",
+    token: localStorage.getItem("Token"),
   };
 
   const list = await axios.get(`${apiUrl}/${resource}`, {
@@ -63,7 +63,7 @@ const getManyReference = async (resource, params) => {
     PerPage: 20,
   };
   const headers = {
-    token: "rYVPYiAjtZYdUNGuxGeNrR6Rb6GkhfXC",
+    token: localStorage.getItem("Token"),
   };
   const list = await axios.get(
     `${apiUrl}/${resource}?Search=${params.id}&SearchBy[]=${params.target}`,
@@ -95,14 +95,115 @@ const getManyReference = async (resource, params) => {
   };
 };
 
-const requesOne = getListData("role");
+const getMany = async (resource, params) => {
+  const localParams = {
+    CurrentPage: 1,
+    PerPage: 20,
+  };
+  const headers = {
+    token: localStorage.getItem("Token"),
+  };
+
+  let queryMap = ""
+
+  for (var i = 0; i < params.ids.length; i++) {
+    var data1 = params.ids[i];
+    queryMap += `&Ids[]=${data1}`
+
+  }
+
+  console.log(queryMap, "data")
+
+  const list = await axios.get(
+    `${apiUrl}/${resource}?${queryMap}`,
+    {
+      params: localParams,
+      headers,
+    }
+  );
+
+
+  const list1 = list.data.List;
+  
+  for (var i = 0; i < list1.length; i++) {
+    var o = list1[i];
+    o.id = o.Id;
+    delete o.Id;
+  }
+  console.log(list1, "list1");
+  return {
+    data: list1,
+    total: 10,
+  };
+};
+
+const getOne = async (resource, params) => {
+  const headers = {
+    token: localStorage.getItem("Token"),
+  };
+  console.log("1231dscff")
+  const list = await axios.get(
+    `${apiUrl}/${resource}/${params.id}`,
+    {
+      headers,
+    }
+  );
+
+  return {
+    data: list.data.List,
+  };
+};
+
+const create = async (resource, params) => {
+  const headers = {
+    Token: localStorage.getItem("Token"),
+  };
+
+  console.log(params.data, "data params")
+
+  const list = await axios.post(`${apiUrl}/${resource}`, params.data, {
+    headers,
+  });
+
+  const list1 = list.data.List;
+
+  return {
+    data: list1,
+    id: 10,
+  };
+};
+
+const update = async (resource, params) => {
+  const headers = {
+    Token: localStorage.getItem("Token"),
+  };
+
+  console.log(params.data, "data params")
+
+  const list = await axios.put(`${apiUrl}/${resource}`, params.data, {
+    headers,
+  });
+
+  const list1 = list.data.List;
+
+  return {
+    data: list1,
+    id: 10,
+  };
+};
+
+
 
 export const dataProv = {
   getList: getListData,
+  getOne,
   getManyReference,
+  getMany,
   getTest: () => {
     return new Promise((resolve, reject) => {
       return resolve({ data: [{ id: "1" }, { id: "2" }] });
     });
   },
+  create,
+  update
 };

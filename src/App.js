@@ -22,15 +22,17 @@ import UsersList from "./components/Payments/UsersList";
 import { dataProv } from "./dataProvider";
 import RoleList from "./components/User/RoleList.jsx";
 import UserRoleList from "./components/User/UserRoleLisr.jsx";
+import UserCreate from "./components/User/UserCreate.jsx";
+import UserRoleCreate from "./components/User/UserRoleCreate.jsx";
+import RoleCreate from "./components/User/RoleCreate.jsx";
+import UserEdit from "./components/User/UserEdit.jsx";
 // const dataProvider = jsonServerProvider('localhost:3000');
 // console.log(dataProvider.getList(),'dataProvider' )
 // const dataProvider1=jsonServerProvider("http://192.168.88.190:8080")
 // console.log(dataProvider1)
 
-
 const dataProvider = dataProv.getList("user");
 console.log(dataProvider, "dataProvider");
-
 
 const App = () => (
   <Admin
@@ -38,13 +40,12 @@ const App = () => (
     dataProvider={dataProv}
     // dataProvider={simpleRestProvider("http://192.168.88.190:7005/")}
 
-    // authProvider={authProvider}
+    authProvider={authProvider}
   >
-    <Resource name="user" list={UserList}/>
-    <Resource name="role" list={RoleList}/>
+    <Resource name="user" create={UserCreate} edit={UserEdit} list={UserList} />
+    <Resource name="role" create={RoleCreate} list={RoleList} />
     {/* <Resource list={FinanceList} name="finance" /> */}
-     <Resource name="userRole" list={UserRoleList}/>
-    
+    <Resource name="userRole" create={UserRoleCreate} list={UserRoleList} />
 
     {/* <Resource name="userCashBox" />
     
